@@ -5,6 +5,7 @@
 package lab8p2_carlosbonilla_carlosnoe;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,30 +13,86 @@ import javax.swing.JOptionPane;
  * @author lospe
  */
 public class Login extends javax.swing.JFrame {
-
+    
     public ArrayList<User> Usuarios = new ArrayList();
     public admUsers UUS;
-
+    public ArrayList<Torneo> TOURS = new ArrayList();
+    public admTorneos OPP;
+    public Torneo Vario;
+    public Player Zero;
+    
     public Login() {
         initComponents();
         JD_Login.pack();
         JD_Login.setVisible(true);
         CargarBinarios();
         Ver();
+        Lista1();
+        Lista2();
     }
-
+    
+    public void Lista1() {
+        DefaultListModel miModelo = new DefaultListModel();
+        for (int i = 0; i < OPP.getTorneos().size(); i++) {
+            miModelo.add(i, OPP.getTorneos().get(i).getName());
+        }
+        JTorneo.setModel(miModelo);
+    }
+    
+    public void Lista5() {
+        DefaultListModel miModelo = new DefaultListModel();
+        for (int i = 0; i < OPP.getTorneos().size(); i++) {
+            miModelo.add(i, OPP.getTorneos().get(i).getName());
+        }
+        JLTabla3.setModel(miModelo);
+    }
+    
+    public void Lista4() {
+        DefaultListModel miModelo = new DefaultListModel();
+        for (int i = 0; i < OPP.getTorneos().size(); i++) {
+            if (OPP.getTorneos().get(i).isFlag()) {
+                miModelo.add(i, OPP.getTorneos().get(i).getName());
+            }
+            
+        }
+        JLTabla2.setModel(miModelo);
+    }
+    
+    public void Lista3() {
+        DefaultListModel miModelo = new DefaultListModel();
+        for (int i = 0; i < OPP.getTorneos().size(); i++) {
+            
+//                miModelo.add(i, OPP.getTorneos().get(i).getName());
+            
+            
+        }
+        JLTabla2.setModel(miModelo);
+    }
+    
+    public void Lista2() {
+        DefaultListModel miModelo = new DefaultListModel();
+        Vario = OPP.getTorneos().get(JTorneo.getSelectedIndex());
+        for (int i = 0; i < Vario.getParticipantes().size(); i++) {
+            miModelo.add(i, Vario.getParticipantes().get(i).getName());
+        }
+        JPersonasDentro.setModel(miModelo);
+    }
+    
     public void Ver() {
         for (int i = 0; i < Usuarios.size(); i++) {
             System.out.println(Usuarios.get(i).toString());
         }
     }
-
+    
     public void CargarBinarios() {
         UUS = new admUsers(Usuarios, "USUARIOS.usu");
         UUS.cargarArchivo();
         Usuarios = UUS.getUsuarios();
+        OPP = new admTorneos(TOURS, "Torneos.TT");
+        OPP.cargarArchivo();
+        TOURS = OPP.getTorneos();
     }
-
+    
     public void CerraInicio() {
         JD_Login.setVisible(true);
         JD_CrearUsuario.setVisible(false);
@@ -64,11 +121,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        JTF_NombreTorneo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        JSP_NumeroDeRondas = new javax.swing.JSpinner();
         JD_Torneos = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -76,9 +133,9 @@ public class Login extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        JTorneo = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        JPersonasDentro = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -103,11 +160,11 @@ public class Login extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        JLTabla3 = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        JLTabla2 = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        JLTabla1 = new javax.swing.JList<>();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
@@ -221,18 +278,23 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setText("Nombre del Torneo");
 
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JTF_NombreTorneo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Crear Torneo");
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Crear Torneo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("jLabel4");
 
-        jSpinner1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        JSP_NumeroDeRondas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JSP_NumeroDeRondas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout JD_CrearTorneoLayout = new javax.swing.GroupLayout(JD_CrearTorneo.getContentPane());
         JD_CrearTorneo.getContentPane().setLayout(JD_CrearTorneoLayout);
@@ -254,10 +316,10 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(JD_CrearTorneoLayout.createSequentialGroup()
                                 .addGap(95, 95, 95)
                                 .addGroup(JD_CrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JSP_NumeroDeRondas, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(JD_CrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField4)
+                                        .addComponent(JTF_NombreTorneo)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -273,11 +335,11 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JSP_NumeroDeRondas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -307,24 +369,24 @@ public class Login extends javax.swing.JFrame {
 
         jLabel14.setText("jLabel4");
 
-        jList1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        JTorneo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JTorneo.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(JTorneo);
 
-        jList2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        JPersonasDentro.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JPersonasDentro.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(JPersonasDentro);
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton3.setText("Crear Torneo");
+        jButton3.setText("Cerrar Torneo");
 
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton6.setText("Marcar Ganador");
@@ -336,6 +398,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton7.setText("Crear Torneo");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JD_TorneosLayout = new javax.swing.GroupLayout(JD_Torneos.getContentPane());
         JD_Torneos.getContentPane().setLayout(JD_TorneosLayout);
@@ -544,26 +611,26 @@ public class Login extends javax.swing.JFrame {
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Torneos Ganados");
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+        JLTabla3.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        jScrollPane3.setViewportView(JLTabla3);
 
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        JLTabla2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        jScrollPane4.setViewportView(JLTabla2);
 
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+        JLTabla1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane5.setViewportView(jList5);
+        jScrollPane5.setViewportView(JLTabla1);
 
         javax.swing.GroupLayout JD_VentanaParticipanteLayout = new javax.swing.GroupLayout(JD_VentanaParticipante.getContentPane());
         JD_VentanaParticipante.getContentPane().setLayout(JD_VentanaParticipanteLayout);
@@ -640,7 +707,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        JD_Login.setVisible(true);
+        JD_VentanaParticipante.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -677,7 +745,7 @@ public class Login extends javax.swing.JFrame {
             JPF_Contra.setText("");
             UUS.escribirArchivo();
             CargarBinarios();
-
+            
             CerraInicio();
         }
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
@@ -687,6 +755,7 @@ public class Login extends javax.swing.JFrame {
         int usuarioAUsar = 0;
         for (int i = 0; i < Usuarios.size(); i++) {
             if (Usuarios.get(i).getName().equalsIgnoreCase(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equalsIgnoreCase(JPF_ContraEntrada.getText())) {
+                Zero = ((Player) Usuarios.get(i));
                 userFound = true;
                 usuarioAUsar = i;
                 System.out.println("a");
@@ -694,8 +763,8 @@ public class Login extends javax.swing.JFrame {
         }
         if (userFound) {
             if (Usuarios.get(usuarioAUsar) instanceof Admin) {
-                JD_CrearTorneo.pack();
-                JD_CrearTorneo.setVisible(true);
+                JD_Torneos.pack();
+                JD_Torneos.setVisible(true);
                 JD_Login.setVisible(false);
                 JTF_NombreEntrada.setText("");
                 JPF_ContraEntrada.setText("");
@@ -705,14 +774,27 @@ public class Login extends javax.swing.JFrame {
                 JD_Login.setVisible(false);
                 JTF_NombreEntrada.setText("");
                 JPF_ContraEntrada.setText("");
-
+                
             }
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña invalidos");
         }
-
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        JD_CrearTorneo.pack();
+        JD_CrearTorneo.setVisible(true);
+        JD_Torneos.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        OPP.getTorneos().add(new Torneo(JTF_NombreTorneo.getText()));
+        JTF_NombreTorneo.setText("");
+        OPP.escribirArchivo();
+        CargarBinarios();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -759,10 +841,17 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Login;
     private javax.swing.JDialog JD_Torneos;
     private javax.swing.JDialog JD_VentanaParticipante;
+    private javax.swing.JList<String> JLTabla1;
+    private javax.swing.JList<String> JLTabla2;
+    private javax.swing.JList<String> JLTabla3;
     private javax.swing.JPasswordField JPF_Contra;
     private javax.swing.JPasswordField JPF_ContraEntrada;
+    private javax.swing.JList<String> JPersonasDentro;
+    private javax.swing.JSpinner JSP_NumeroDeRondas;
     private javax.swing.JTextField JTF_CrearNombreUsu;
     private javax.swing.JTextField JTF_NombreEntrada;
+    private javax.swing.JTextField JTF_NombreTorneo;
+    private javax.swing.JList<String> JTorneo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -792,11 +881,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -807,7 +891,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,14 @@ class Torneo implements Serializable{
         this.flag = flag;
     }
 
+    public Torneo(String name) {
+        this.name = name;
+        this.flag = true;
+    }
+
+
+
+    
     public String getName() {
         return name;
     }
