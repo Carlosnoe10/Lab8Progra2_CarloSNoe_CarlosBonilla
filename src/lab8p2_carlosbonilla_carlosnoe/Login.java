@@ -20,6 +20,14 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         JD_Login.pack();
         JD_Login.setVisible(true);
+        CargarBinarios();
+        Ver();
+    }
+
+    public void Ver() {
+        for (int i = 0; i < Usuarios.size(); i++) {
+            System.out.println(Usuarios.get(i).toString());
+        }
     }
 
     public void CargarBinarios() {
@@ -655,7 +663,7 @@ public class Login extends javax.swing.JFrame {
 
     private void JB_CrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearUsuarioActionPerformed
         if (JCBOX_Admin.isSelected()) {
-            Usuarios.add(new Admin(0, JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
+            UUS.getUsuarios().add(new Admin(0, JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
             JTF_CrearNombreUsu.setText("");
             JPF_Contra.setText("");
@@ -663,12 +671,13 @@ public class Login extends javax.swing.JFrame {
             UUS.escribirArchivo();
             CerraInicio();
         } else if (JCBOX_Participante.isSelected()) {
-            Usuarios.add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
+            UUS.getUsuarios().add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
             JTF_CrearNombreUsu.setText("");
             JPF_Contra.setText("");
-            CargarBinarios();
             UUS.escribirArchivo();
+            CargarBinarios();
+
             CerraInicio();
         }
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
@@ -680,7 +689,7 @@ public class Login extends javax.swing.JFrame {
             if (Usuarios.get(i).getName().equalsIgnoreCase(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equalsIgnoreCase(JPF_ContraEntrada.getText())) {
                 userFound = true;
                 usuarioAUsar = i;
-
+                System.out.println("a");
             }
         }
         if (userFound) {
@@ -691,11 +700,11 @@ public class Login extends javax.swing.JFrame {
                 JTF_NombreEntrada.setText("");
                 JPF_ContraEntrada.setText("");
             } else {
-                                    JD_VentanaParticipante.pack();
-                    JD_VentanaParticipante.setVisible(true);
-                    JD_Login.setVisible(false);
-                    JTF_NombreEntrada.setText("");
-                    JPF_ContraEntrada.setText("");   
+                JD_VentanaParticipante.pack();
+                JD_VentanaParticipante.setVisible(true);
+                JD_Login.setVisible(false);
+                JTF_NombreEntrada.setText("");
+                JPF_ContraEntrada.setText("");
 
             }
         } else {
