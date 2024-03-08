@@ -4,13 +4,14 @@
  */
 package lab8p2_carlosbonilla_carlosnoe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lospe
  */
-class Torneo {
+class Torneo implements Serializable{
     String name;
     Player winner;
     ArrayList <Player> participantes=new ArrayList();

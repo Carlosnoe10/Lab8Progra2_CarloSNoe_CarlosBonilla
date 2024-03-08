@@ -4,13 +4,14 @@
  */
 package lab8p2_carlosbonilla_carlosnoe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lospe
  */
-public class Player extends User{
+public class Player extends User implements Serializable{
      ArrayList<Torneo> torneos=new ArrayList();
 
     public Player(String name, String password) {
