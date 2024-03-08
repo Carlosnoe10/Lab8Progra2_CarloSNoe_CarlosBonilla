@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public ArrayList<User> Usuarios = new ArrayList();
+    public admUsers UUS;
 
     public Login() {
         initComponents();
@@ -22,9 +23,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void CargarBinarios() {
-        admUsers UUS = new admUsers(Usuarios, "USUARIOS.usu");
+        UUS = new admUsers(Usuarios, "USUARIOS.usu");
         UUS.cargarArchivo();
-        Usuarios=UUS.getUsuarios();
+        Usuarios = UUS.getUsuarios();
     }
 
     /**
@@ -646,11 +647,17 @@ public class Login extends javax.swing.JFrame {
         if (JCBOX_Admin.isSelected()) {
             Usuarios.add(new Admin(0, JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
+            JTF_CrearNombreUsu.setText("");
+            JPF_Contra.setText("");
+            CargarBinarios();
+            UUS.escribirArchivo();
         } else {
             Usuarios.add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
             JTF_CrearNombreUsu.setText("");
             JPF_Contra.setText("");
+            CargarBinarios();
+            UUS.escribirArchivo();
         }
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
 
