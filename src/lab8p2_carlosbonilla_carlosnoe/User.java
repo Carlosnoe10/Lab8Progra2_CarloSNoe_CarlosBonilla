@@ -41,3 +41,15 @@ public class User implements Serializable{
     }
     
 }
+/*
+Jlist lista=new Jlist();
+m=lista.(DefaultListModel)lista.getmodel();
+for (int i=0;i<Usuarios.getSize();i++){
+m.addelement(Usuarios.get(i));
+}
+lista.setModel(m);
+add.list;
+
+
+
+*/
