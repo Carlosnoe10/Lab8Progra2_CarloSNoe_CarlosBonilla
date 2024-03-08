@@ -4,11 +4,13 @@
  */
 package lab8p2_carlosbonilla_carlosnoe;
 
+import java.io.Serializable;
+
 /**
  *
  * @author lospe
  */
-public class Admin extends User{
+public class Admin extends User implements Serializable{
      int torneosCreados;
 
     public Admin(int torneosCreados, String name, String password) {
