@@ -643,6 +643,8 @@ public class Login extends javax.swing.JFrame {
         } else {
             Usuarios.add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
+            JTF_CrearNombreUsu.setText("");
+            JPF_Contra.setText("");
         }
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
 
