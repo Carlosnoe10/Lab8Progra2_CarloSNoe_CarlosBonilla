@@ -675,7 +675,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         for (int i = 0; i < Usuarios.size(); i++) {
-            if (Usuarios.get(i).getName().equals(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equals(JPF_ContraEntrada.getText())) {
+            if (Usuarios.get(i).getName().equalsIgnoreCase(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equalsIgnoreCase(JPF_ContraEntrada.getText())) {
                 if (Usuarios.get(i) instanceof Admin) {
                     JD_CrearTorneo.pack();
                     JD_CrearTorneo.setVisible(true);
