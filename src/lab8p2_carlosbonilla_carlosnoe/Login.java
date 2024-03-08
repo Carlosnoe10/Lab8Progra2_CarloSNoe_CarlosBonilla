@@ -4,15 +4,17 @@
  */
 package lab8p2_carlosbonilla_carlosnoe;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lospe
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+    public ArrayList<User> Usuarios = new ArrayList();
+
     public Login() {
         initComponents();
         JD_Login.pack();
@@ -396,6 +398,11 @@ public class Login extends javax.swing.JFrame {
 
         JB_CrearUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         JB_CrearUsuario.setText("Crear");
+        JB_CrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_CrearUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("jLabel4");
 
@@ -628,6 +635,16 @@ public class Login extends javax.swing.JFrame {
             JCBOX_Admin.setSelected(false);
         }
     }//GEN-LAST:event_JCBOX_AdminActionPerformed
+
+    private void JB_CrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearUsuarioActionPerformed
+        if (JCBOX_Admin.isSelected()) {
+            Usuarios.add(new Admin(0, JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
+            JOptionPane.showMessageDialog(this, "Usuario Creado");
+        } else {
+            Usuarios.add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
+            JOptionPane.showMessageDialog(this, "Usuario Creado");
+        }
+    }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
