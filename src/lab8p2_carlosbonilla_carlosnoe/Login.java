@@ -674,25 +674,35 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        boolean userFound = false;
+        int usuarioAUsar = 0;
         for (int i = 0; i < Usuarios.size(); i++) {
             if (Usuarios.get(i).getName().equalsIgnoreCase(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equalsIgnoreCase(JPF_ContraEntrada.getText())) {
-                if (Usuarios.get(i) instanceof Admin) {
-                    JD_CrearTorneo.pack();
-                    JD_CrearTorneo.setVisible(true);
-                    JD_Login.setVisible(false);
-                    JTF_NombreEntrada.setText("");
-                    JPF_ContraEntrada.setText("");
-                } else {
-                    JD_VentanaParticipante.pack();
+                userFound = true;
+                usuarioAUsar = i;
+
+            }
+        }
+        if (userFound) {
+            if (Usuarios.get(usuarioAUsar) instanceof Admin) {
+                JD_CrearTorneo.pack();
+                JD_CrearTorneo.setVisible(true);
+                JD_Login.setVisible(false);
+                JTF_NombreEntrada.setText("");
+                JPF_ContraEntrada.setText("");
+            } else {
+                                    JD_VentanaParticipante.pack();
                     JD_VentanaParticipante.setVisible(true);
                     JD_Login.setVisible(false);
                     JTF_NombreEntrada.setText("");
-                    JPF_ContraEntrada.setText("");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña invalidos");
+                    JPF_ContraEntrada.setText("");   
+
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña invalidos");
         }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
