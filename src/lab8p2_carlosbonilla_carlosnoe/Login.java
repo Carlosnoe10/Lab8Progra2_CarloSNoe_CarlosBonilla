@@ -15,6 +15,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        JD_Login.pack();
+        JD_Login.setVisible(true);
     }
 
     /**
@@ -36,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         JD_CrearTorneo = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -63,13 +64,13 @@ public class Login extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        JTF_CrearNombreUsu = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jPasswordField3 = new javax.swing.JPasswordField();
-        jButton5 = new javax.swing.JButton();
+        JPF_Contra = new javax.swing.JPasswordField();
+        JB_CrearUsuario = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        JCBOX_Participante = new javax.swing.JCheckBox();
+        JCBOX_Admin = new javax.swing.JCheckBox();
         JD_VentanaParticipante = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
@@ -104,6 +105,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("Registar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Nombre de Usuario");
@@ -119,8 +125,6 @@ public class Login extends javax.swing.JFrame {
         jButton2.setText("Iniciar Sesion");
 
         jLabel4.setText("jLabel4");
-
-        jLabel5.setText("jLabel5");
 
         javax.swing.GroupLayout JD_LoginLayout = new javax.swing.GroupLayout(JD_Login.getContentPane());
         JD_Login.getContentPane().setLayout(JD_LoginLayout);
@@ -144,10 +148,8 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JD_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JD_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         JD_LoginLayout.setVerticalGroup(
@@ -157,11 +159,8 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JD_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(JD_LoginLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,23 +387,33 @@ public class Login extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel15.setText("Nombre de Usuario");
 
-        jTextField5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JTF_CrearNombreUsu.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel16.setText("Crear Usuario");
 
-        jPasswordField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JPF_Contra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Crear");
+        JB_CrearUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JB_CrearUsuario.setText("Crear");
 
         jLabel17.setText("jLabel4");
 
-        jCheckBox3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jCheckBox3.setText("Participante");
+        JCBOX_Participante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JCBOX_Participante.setText("Participante");
+        JCBOX_Participante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCBOX_ParticipanteActionPerformed(evt);
+            }
+        });
 
-        jCheckBox4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jCheckBox4.setText("Administrador");
+        JCBOX_Admin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JCBOX_Admin.setText("Administrador");
+        JCBOX_Admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCBOX_AdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JD_CrearUsuarioLayout = new javax.swing.GroupLayout(JD_CrearUsuario.getContentPane());
         JD_CrearUsuario.getContentPane().setLayout(JD_CrearUsuarioLayout);
@@ -417,20 +426,20 @@ public class Login extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addGroup(JD_CrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JD_CrearUsuarioLayout.createSequentialGroup()
-                                .addComponent(jCheckBox3)
+                                .addComponent(JCBOX_Participante)
                                 .addGap(139, 139, 139)
-                                .addComponent(jCheckBox4))
+                                .addComponent(JCBOX_Admin))
                             .addGroup(JD_CrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPasswordField3)
+                                .addComponent(JPF_Contra)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                                .addComponent(JTF_CrearNombreUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))))
                     .addGroup(JD_CrearUsuarioLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(JD_CrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JB_CrearUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -445,17 +454,17 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTF_CrearNombreUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JPF_Contra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(JD_CrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4))
+                    .addComponent(JCBOX_Participante)
+                    .addComponent(JCBOX_Admin))
                 .addGap(84, 84, 84)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JB_CrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -602,6 +611,24 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JD_Login.setVisible(false);
+        JD_CrearUsuario.pack();
+        JD_CrearUsuario.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JCBOX_ParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBOX_ParticipanteActionPerformed
+        if (JCBOX_Admin.isSelected()) {
+            JCBOX_Participante.setSelected(false);
+        }
+    }//GEN-LAST:event_JCBOX_ParticipanteActionPerformed
+
+    private void JCBOX_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBOX_AdminActionPerformed
+        if (JCBOX_Participante.isSelected()) {
+            JCBOX_Admin.setSelected(false);
+        }
+    }//GEN-LAST:event_JCBOX_AdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -633,28 +660,30 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login().setVisible(false);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JB_CrearUsuario;
+    private javax.swing.JCheckBox JCBOX_Admin;
+    private javax.swing.JCheckBox JCBOX_Participante;
     private javax.swing.JDialog JD_CrearTorneo;
     private javax.swing.JDialog JD_CrearUsuario;
     private javax.swing.JDialog JD_Login;
     private javax.swing.JDialog JD_Torneos;
     private javax.swing.JDialog JD_VentanaParticipante;
+    private javax.swing.JPasswordField JPF_Contra;
+    private javax.swing.JTextField JTF_CrearNombreUsu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -672,7 +701,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -688,7 +716,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -697,6 +724,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

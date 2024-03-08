@@ -30,11 +30,8 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" alignment="1" min="-2" pref="169" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton2" alignment="1" min="-2" pref="169" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -47,13 +44,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel4" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel4" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jTextField3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -107,6 +100,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Registar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -149,11 +145,6 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel5"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -522,14 +513,14 @@
                           <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="JCBOX_Participante" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="JCBOX_Admin" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPasswordField3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JPF_Contra" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField5" alignment="0" pref="384" max="32767" attributes="0"/>
+                                  <Component id="JTF_CrearNombreUsu" alignment="0" pref="384" max="32767" attributes="0"/>
                                   <Component id="jLabel15" alignment="0" pref="384" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -541,7 +532,7 @@
                   </Group>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton5" alignment="1" min="-2" pref="169" max="-2" attributes="0"/>
+                      <Component id="JB_CrearUsuario" alignment="1" min="-2" pref="169" max="-2" attributes="0"/>
                       <Component id="jLabel17" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -560,18 +551,18 @@
                   <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Component id="jLabel15" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextField5" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="JTF_CrearNombreUsu" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPasswordField3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="JPF_Contra" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JCBOX_Participante" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JCBOX_Admin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="89" max="-2" attributes="0"/>
+                  <Component id="JB_CrearUsuario" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -614,7 +605,7 @@
             <Property name="text" type="java.lang.String" value="Nombre de Usuario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="JTF_CrearNombreUsu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
@@ -629,14 +620,14 @@
             <Property name="text" type="java.lang.String" value="Crear Usuario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField3">
+        <Component class="javax.swing.JPasswordField" name="JPF_Contra">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="JB_CrearUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
@@ -649,21 +640,27 @@
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+        <Component class="javax.swing.JCheckBox" name="JCBOX_Participante">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Participante"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCBOX_ParticipanteActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+        <Component class="javax.swing.JCheckBox" name="JCBOX_Admin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCBOX_AdminActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
