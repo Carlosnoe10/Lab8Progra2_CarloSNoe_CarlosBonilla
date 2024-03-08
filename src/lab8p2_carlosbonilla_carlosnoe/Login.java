@@ -21,6 +21,12 @@ public class Login extends javax.swing.JFrame {
         JD_Login.setVisible(true);
     }
 
+    public void CargarBinarios() {
+        admUsers UUS = new admUsers(Usuarios, "USUARIOS.usu");
+        UUS.cargarArchivo();
+        Usuarios=UUS.getUsuarios();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
