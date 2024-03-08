@@ -56,7 +56,7 @@ class Torneo {
 
     @Override
     public String toString() {
-        return "Torneo{" + "name=" + name + ", winner=" + winner + ", participantes=" + participantes + ", flag=" + flag + '}';
+        return name;
     }
     
 }
