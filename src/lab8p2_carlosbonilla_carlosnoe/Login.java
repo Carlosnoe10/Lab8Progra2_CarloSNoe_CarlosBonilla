@@ -28,6 +28,11 @@ public class Login extends javax.swing.JFrame {
         Usuarios = UUS.getUsuarios();
     }
 
+    public void CerraInicio() {
+        JD_Login.setVisible(true);
+        JD_CrearUsuario.setVisible(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,9 +47,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        JTF_NombreEntrada = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        JPF_ContraEntrada = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         JD_CrearTorneo = new javax.swing.JDialog();
@@ -123,15 +128,20 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Nombre de Usuario");
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JTF_NombreEntrada.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel1.setText("LOGIN");
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JPF_ContraEntrada.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton2.setText("Iniciar Sesion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
 
@@ -145,9 +155,9 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(JD_LoginLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addGroup(JD_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1)
+                            .addComponent(JPF_ContraEntrada)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                            .addComponent(JTF_NombreEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)))
                     .addGroup(JD_LoginLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -172,11 +182,11 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTF_NombreEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JPF_ContraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125)
                 .addGroup(JD_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -651,15 +661,39 @@ public class Login extends javax.swing.JFrame {
             JPF_Contra.setText("");
             CargarBinarios();
             UUS.escribirArchivo();
-        } else {
+            CerraInicio();
+        } else if (JCBOX_Participante.isSelected()) {
             Usuarios.add(new Player(JTF_CrearNombreUsu.getText(), JPF_Contra.getText()));
             JOptionPane.showMessageDialog(this, "Usuario Creado");
             JTF_CrearNombreUsu.setText("");
             JPF_Contra.setText("");
             CargarBinarios();
             UUS.escribirArchivo();
+            CerraInicio();
         }
     }//GEN-LAST:event_JB_CrearUsuarioActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        for (int i = 0; i < Usuarios.size(); i++) {
+            if (Usuarios.get(i).getName().equals(JTF_NombreEntrada.getText()) && Usuarios.get(i).getPassword().equals(JPF_ContraEntrada.getText())) {
+                if (Usuarios.get(i) instanceof Admin) {
+                    JD_CrearTorneo.pack();
+                    JD_CrearTorneo.setVisible(true);
+                    JD_Login.setVisible(false);
+                    JTF_NombreEntrada.setText("");
+                    JPF_ContraEntrada.setText("");
+                } else {
+                    JD_VentanaParticipante.pack();
+                    JD_VentanaParticipante.setVisible(true);
+                    JD_Login.setVisible(false);
+                    JTF_NombreEntrada.setText("");
+                    JPF_ContraEntrada.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña invalidos");
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -707,7 +741,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Torneos;
     private javax.swing.JDialog JD_VentanaParticipante;
     private javax.swing.JPasswordField JPF_Contra;
+    private javax.swing.JPasswordField JPF_ContraEntrada;
     private javax.swing.JTextField JTF_CrearNombreUsu;
+    private javax.swing.JTextField JTF_NombreEntrada;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -747,14 +783,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
