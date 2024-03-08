@@ -10,14 +10,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lospe
  */
-public class admTorneos {
+public class admTorneos implements Serializable{
             public ArrayList<Torneo> torneos = new ArrayList();
+            final static long binary2=2L;
     public File Archive = null;
 
     public admTorneos(ArrayList<Torneo> MODELITO, String path) {

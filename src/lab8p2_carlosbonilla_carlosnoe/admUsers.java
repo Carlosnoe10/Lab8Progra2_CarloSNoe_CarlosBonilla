@@ -10,13 +10,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lospe
  */
-public class admUsers {
+public class admUsers implements Serializable{
+    final static long binary1=1L;
         public ArrayList<User> usuarios = new ArrayList();
     public File Archive = null;
 
