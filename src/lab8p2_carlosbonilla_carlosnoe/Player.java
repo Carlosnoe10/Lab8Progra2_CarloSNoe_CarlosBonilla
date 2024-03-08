@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * @author lospe
  */
 public class Player extends User{
-     ArrayList<String> torneos=new ArrayList();
+     ArrayList<Torneo> torneos=new ArrayList();
 
     public Player(String name, String password) {
         super(name, password);
     }
 
-    public ArrayList<String> getTorneos() {
+    public ArrayList<Torneo> getTorneos() {
         return torneos;
     }
 
-    public void setTorneos(ArrayList<String> torneos) {
+    public void setTorneos(ArrayList<Torneo> torneos) {
         this.torneos = torneos;
     }
 
